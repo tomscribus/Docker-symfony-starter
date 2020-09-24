@@ -1,6 +1,6 @@
 
 init:
-	docker-compose up -d && docker-compose exec php composer create-project symfony/skeleton ./
+	docker-compose up -d && docker-compose exec php composer create-project symfony/website-skeleton ./
 
 start:
 	docker-compose up -d
