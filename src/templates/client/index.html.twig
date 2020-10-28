@@ -1,0 +1,40 @@
+{% extends 'home/index.html.twig' %}
+
+{% block content %}
+
+    <h1>Liste des clients</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.surname }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.email }}</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="{{ path('client_show', {'id': client.id}) }}">afficher</a>
+                    <a class="btn btn-sm btn-success" href="{{ path('client_edit', {'id': client.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary ml-4" href="{{ path('client_new') }}">Ajouter</a>
+{% endblock %}

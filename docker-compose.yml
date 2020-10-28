@@ -34,3 +34,6 @@ services:
         - MYSQL_DATABASE=blog
         - MYSQL_USER=root
         - MYSQL_PASSWORD=example
+
+
+      

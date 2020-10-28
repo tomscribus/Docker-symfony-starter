@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Resiliation{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Signer votre mandat</h1>
+
+    <P>Veuillez vérifier l'exactitude des informations et valider le formulaire afin de signer électroniquement votre mandat de résiliation </p>
+
+    {{ include('resiliation/_form.html.twig', {'button_label': 'Signer le mandat'}) }}
+    
+</div>
+{% endblock %}

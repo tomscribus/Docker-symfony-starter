@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,6 +20,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_client"})
      */
     private $id;
 
@@ -40,6 +44,17 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mandat::class, mappedBy="broker", orphanRemoval=true)
+     */
+    private $mandats;
+
+    public function __construct()
+    {
+        $this->clients = new ArrayCollection();
+        $this->mandats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -129,5 +144,41 @@ class User implements UserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Mandat[]
+     */
+    public function getMandats(): Collection
+    {
+        return $this->mandats;
+    }
+
+    public function addMandat(Mandat $mandat): self
+    {
+        if (!$this->mandats->contains($mandat)) {
+            $this->mandats[] = $mandat;
+            $mandat->setBroker($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMandat(Mandat $mandat): self
+    {
+        if ($this->mandats->contains($mandat)) {
+            $this->mandats->removeElement($mandat);
+            // set the owning side to null (unless already changed)
+            if ($mandat->getBroker() === $this) {
+                $mandat->setBroker(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getEmail();
     }
 }

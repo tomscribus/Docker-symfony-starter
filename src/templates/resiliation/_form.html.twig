@@ -1,0 +1,33 @@
+<div class="user container">
+{{ form_start(form) }}
+<div class="row">
+<div class="col-md-6">
+  <div class="form-group">
+    {{ form_label(form.mandat.client.siret, 'Siret' )}}
+    {{ form_widget(form.mandat.client.siret, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.mandat.client.legal_name, 'Raison sociale' )}}
+    {{ form_widget(form.mandat.client.legal_name, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.mandat.client.name, 'Nom du représentant' )}}
+    {{ form_widget(form.mandat.client.name, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.mandat.client.surname, 'Prenom du représentant' )}}
+    {{ form_widget(form.mandat.client.surname, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.mandat.client.email, 'E-mail' )}}
+    {{ form_widget(form.mandat.client.email, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.mandat.client.address, 'Adresse' )}}
+    {{ form_widget(form.mandat.client.address, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+  </div>
+  </div>
+  <div class="col-md-6">
+  <div class="form-group">
+    {{ form_label(form.mandat.client.insurer, 'Ancien assureur' )}}
+    {{ form_widget(form.mandat.client.insurer, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.resiliation_type, 'Type de résiliation' )}}
+    {{ form_widget(form.resiliation_type, { 'attr': {'class': 'form-control form-control-user'} } ) }}
+    {{ form_label(form.start_date, 'Date de prise d effet' )}}
+    {{ form_widget(form.start_date, { 'attr': {'class': 'form-control form-control-user'}} ) }}
+  </div>
+  </div>
+  </div>
+    <button type="submit" class="btn btn-primary btn-user btn-block">{{ button_label|default('Envoyer une demande de signature') }}</button>
+{{ form_end(form) }}
+</div>

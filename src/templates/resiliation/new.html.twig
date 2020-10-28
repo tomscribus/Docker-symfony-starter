@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de résiliation{% endblock %}
+
+{% block body %}
+    <h1>Créer une demande de résiliation</h1>
+
+    {{ include('resiliation/_form.html.twig') }}
+
+  <a class="btn btn-primary btn-user mt-3" href="{{ path('resiliation_index') }}"> &#8592; Retour à la liste des resiliations</a>
+{% endblock %}

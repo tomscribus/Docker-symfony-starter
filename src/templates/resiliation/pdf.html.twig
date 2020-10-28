@@ -1,0 +1,115 @@
+<page backtop="50mm">
+	<style type="text/css">
+		page{
+			max-width: 100%;
+		}
+		table { 
+			width: 100%; 
+			color: #717375; 
+			font-family: helvetica; 
+			line-height: 5mm; 
+			border-collapse: collapse; 
+		}
+		img{
+			width: 100%;
+		}
+		b{
+			font-weight: bold;
+		}
+		h2 { margin: 0; padding: 0; }
+		p { margin: 5px; color: #717375; }
+		.border th { 
+			border: 1px solid #000;  
+			color: white; 
+			background: #000; 
+			padding: 5px; 
+			font-weight: normal; 
+			font-size: 14px; 
+			text-align: center; 
+		}
+		.border td { 
+			border: 1px solid #CFD1D2; 
+			padding: 5px 10px; 
+			text-align: center; 
+		}
+		.no-border { 
+			border-right: 1px solid #CFD1D2; 
+			border-left: none; 
+			border-top: none; 
+			border-bottom: none;
+		}
+		.p-10 { width: 10%; } .p-15 { width: 15%; } 
+		.p-33 { width: 33%; } .p-45 { width: 45%; }
+	</style>
+    <page_header>
+		<table>
+			<tr>
+				<td>
+				<img src="./img/Logo-hener.jpg" style="width:100px;height:100px;">
+				  <br>
+				   <p style="font-size:5px;">
+					Henner, Société anonyme d’assurance sur la vie et la capitalisation au capital de 1 263 556 110 euros.
+					Entreprise régie par le Code des Assurances –
+					086 380 730 RCS Nanterre. Siret 086 380 730 00092.
+					Siège Social : Tour D2 – 17 bis place des Reflets – 92919 Paris La Défense Cedex.
+					</p>
+					<br>
+					<br>
+					<br>
+					<br>
+				</td>
+			</tr>
+			<br>
+			<br>
+			<tr>
+				<td>
+					<b>Compagnie cédante</b>
+					<br>
+					<br>
+                    <b>Nom :</b> {{client.insurer}}<br>
+                    <b>Adresse :</b><br>
+                    <b>Code postal et ville :</b>
+					<br><br>
+			    </td>
+			</tr>
+			<tr>
+			<td>
+			    <b>Raison Sociale :</b> {{client.legal_name}}<br>
+				<b>Type de contrat :</b> Frais de santé obligatoire<br>
+				<b>SIRET :</b> {{client.siret}}<br>
+				<b>Assureur actuel :</b> {{client.insurer}}<br>
+				<b>Date de prise d’effet contrat :</b>{{resiliation.start_date|date("m/d/Y")}}<br>
+				<b>Objet :</b> résiliation en vertu de l’article L.113-15-2 du Code des assurances (résiliation infra annuelle)
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</td>
+			</tr>
+			<tr>
+			<td>
+			   <p>
+				Madame, Monsieur,
+				<br>
+				<br>
+				<br>
+				Je soussigné(e) {{client.name}}  {{client.surname}} représentant légal de la société {{client.legal_name}} domiciliée au vous informe de ma volonté de souscrire auprès de la société d’assurance Henner un contrat collectif frais de santé. <br>
+				Par conséquent, je vous donne mandat, pour agir en mon nom et pour le compte de la société {{client.legal_name}}, afin de résilier le contrat dont les références sont mentionnées ci-dessus.<br>
+				J'atteste que le contrat actuel date de plus d'un (1) an et j'ai bien pris connaissance que sa résiliation prendra effet un (1) mois après que mon assureur actuel en ait reçu notification.
+				<br>
+				<br>
+				<br>
+				Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.
+			   </p>
+			</td> 
+			</tr>
+		</table>
+    </page_header> 
+    <page_footer> 
+    </page_footer>
+</page>

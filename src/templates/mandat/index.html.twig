@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des mandats{% endblock %}
+
+{% block body %}
+    <h1>Liste des mandats</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date de création</th>
+                <th>Pdf</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mandat in mandats %}
+            <tr>
+                <td>{{ mandat.id }}</td>
+                <td>{{ mandat.creationDate ? mandat.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td><a href="{{ path('mandat_download', {'filename': mandat.document}) }}"><i class="fas fa-file-contract"></i></a></td>
+                <td>
+                    <a href="{{ path('mandat_show', {'id': mandat.id}) }}">show</a>
+                    <a href="{{ path('mandat_edit', {'id': mandat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun mandat existant</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('mandat_new') }}">Ajouter</a>
+{% endblock %}

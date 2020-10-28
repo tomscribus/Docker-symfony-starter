@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mandat{% endblock %}
+
+{% block body %}
+    <h1>Mandat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mandat.id }}</td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{{ mandat.creationDate ? mandat.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Pdf</th>
+                <td>{{ mandat.document }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-user" href="{{ path('mandat_index') }}"> &#8592; Retour à la liste des mandats</a>
+
+    <a class="btn btn-success" href="{{ path('client_edit', {'id': mandat.id}) }}">Editer</a>
+
+    {{ include('mandat/_delete_form.html.twig') }}
+{% endblock %}

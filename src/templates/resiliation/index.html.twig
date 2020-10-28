@@ -1,0 +1,65 @@
+{% extends 'home/index.html.twig' %}
+
+{% block content %}
+
+    <div class="center">
+        <h1>Liste des résiliations</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type de résiliation</th>
+                <th>Raison sociale</th>
+                <th>Siret</th>
+                <th>Nom du représentant legal</th>
+                <th>Prenom du représentant legal</th>
+                <th>Date de prise d'effet</th>
+                <th>Assureur actuel</th>
+                <th>Status</th>
+                <th>Télécharger le Mandat</th>
+                <th>Ouvrir le Mandat</th>
+                <th>Lettre de résiliation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resiliation in resiliations %}
+            <tr>
+                <td>{{ resiliation.id }}</td>
+                <td>{{ resiliation.resiliation_type }}</td>
+                <td>{{ resiliation.mandat.client.legal_name }}</td>
+                <td>{{ resiliation.mandat.client.siret }}</td>
+                <td>{{ resiliation.mandat.client.name }}</td>
+                <td>{{ resiliation.mandat.client.surname }}</td>
+                <td>{{ resiliation.start_date|date("m/d/Y")}}</td>
+                <td>{{ resiliation.mandat.client.insurer }}</td>
+                <td>{{ resiliation.status }}</td>
+                <td>
+                {% if resiliation.mandat.document %}
+                <a href="{{ path('mandat_download', {'filename': resiliation.mandat.document}) }}"><i class="fas fa-file-contract"></i></a>
+                {% else %}
+                 -
+                {% endif %}
+                </td>
+                <td>
+                {% if resiliation.mandat.document %}
+                <a href="{{ path('mandat_open', {'filename': resiliation.mandat.document}) }}"><i class="fas fa-eye"></i></a>
+                {% else %}
+                 -
+                {% endif %}
+                </td>
+                <td>
+                 -
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune résiliations trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-user ml-3 " href="{{ path('resiliation_new') }}">Créer une nouvelle demande de résiliation</a>
+{% endblock %}
